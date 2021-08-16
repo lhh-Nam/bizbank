@@ -1,4 +1,5 @@
-import { textColors, colors, borderRadiuses } from '../../../style/Theme'
+import { textColors, colors, borderRadiuses, boxShadows } from '../../../style/Theme';
+import { getShadowStyle } from '../../../utils/StylesUtils';
 
 const bold = {
     fontWeight: 'bold',
@@ -25,6 +26,8 @@ const row = {
             minmax(50px, 0.2fr)`,
 }
 
+const drawerWidth = 240;
+
 export const styles = theme => ({
     wrapper: {
         margin: '32px 48px',
@@ -42,21 +45,9 @@ export const styles = theme => ({
         display: 'flex',
     },
     main: {
-        flexBasis: '70%',
-        width: '70%',
-    },
-    sidebar: {
-        flexBasis: '30%',
-        width: '30%',
-        marginLeft: 48,
-        '& h2': {
-            margin: 0,
-            marginBottom: 16,
-        },
-        '& select': {
-            width: '100%',
-            padding: '4px 0',
-        },
+        // flexBasis: '70%',
+        // width: '70%',
+        flex: 1,
     },
     title: {
         ...flex,
@@ -66,15 +57,18 @@ export const styles = theme => ({
         '& input': {
             borderRadius: 10,
             border: '1px solid #000',
-            padding: '4px 8px'
+            padding: '4px 8px',
         }
+    },
+    titleDiv: {
+        ...flex,
     },
     filter: {
         ...flex,
-        margin: '24px 0'
+        margin: '24px 0',
+
     },
     confirmBtn: {
-        border: `1px solid ${colors.black}`,
         background: colors.bgDefault,
         borderRadius: 3,
         padding: '4px 8px',
@@ -86,26 +80,34 @@ export const styles = theme => ({
     btnGroup: {
         ...flex,
         border: `1px solid ${colors.black}`,
-        borderRadius: 3,
         background: colors.bgDefault,
+        borderRadius: 3,
+
+
         '& p': {
             borderRight: `1px solid ${colors.black}`,
             padding: '4px 8px',
             cursor: 'pointer',
             '&:last-child': {
                 borderRight: 0,
-            }
+            },
+            '&:hover': {
+                background: colors.gray,
+            },
         }
     },
     active: {
         background: `${colors.blue} !important`,
         color: colors.white,
+        '&:hover': {
+            background: `${colors.blueHover} !important`,
+        }
     },
     account: {
         ...flex,
         flexBasis: '70%',
         justifyContent: 'flex-start',
-        '& p': {
+        '& button': {
             flexBasis: '20%',
             border: `1px solid ${colors.gray}`,
             borderRadius: borderRadiuses.tiny,
@@ -113,11 +115,17 @@ export const styles = theme => ({
             marginRight: 8,
             padding: '8px 0px',
             cursor: 'pointer',
+
+            textTransform: 'none',
+            fontFamily: 'inherit',
+            fontSize: 'inherit',
+            fontWeight: 'inherit',
+
         }
     },
     operating: {
         ...flex,
-        '& p': {
+        '& button': {
             flexBasis: '20%',
             border: `1px solid ${colors.gray}`,
             borderRadius: borderRadiuses.tiny,
@@ -187,25 +195,156 @@ export const styles = theme => ({
             '& img': {
                 width: 20,
                 height: 20,
+                cursor: 'pointer',
             },
             '& input': {
                 margin: '0 16px',
-                padding: 4,
-                cursor: 'pointer',
+                padding: '8px 16px',
+                border: 'none',
+                borderRadius: borderRadiuses.small,
+                ...getShadowStyle({ color: boxShadows.base }),
+                '&:hover': {
+                    ...getShadowStyle({ color: boxShadows.baseHover }),
+                },
             }
         }
     },
     export: {
-        border: '1px solid #000',
+        background: colors.bgDefault,
+        textTransform: 'none',
         width: 'fit-content',
         display: 'flex',
         alignItems: 'center',
         padding: '8px 16px',
-        borderRadius: borderRadiuses.tiny,
-        background: colors.bgDefault,
+        fontFamily: 'inherit',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
         '& img': {
             width: 20,
             height: 20,
+            marginRight: 6,
         },
+    },
+    inputArea: {
+        height: 41,
+        display: 'flex',
+        alignItems: 'center',
+        borderRadius: borderRadiuses.small,
+        backgroundColor: colors.white,
+        ...getShadowStyle({ color: boxShadows.base }),
+        '&:hover': {
+            ...getShadowStyle({ color: boxShadows.baseHover }),
+        },
+        '& img': {
+            width: 20,
+            height: 20,
+            padding: '0 16px',
+        },
+        '& input': {
+            width: 270,
+            border: 'none',
+            outline: 'none',
+        }
+    },
+
+
+
+
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: 36,
+    },
+    hide: {
+        display: 'none',
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
+        '& p': {
+            textAlign: 'center',
+        },
+        '& a': {
+            textDecoration: 'none',
+            color: colors.black,
+        },
+        '& h2': {
+            margin: 0,
+            marginBottom: 16,
+        },
+    },
+    drawerOpen: {
+        width: drawerWidth,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        backgroundColor: colors.bgColor,
+    },
+    drawerClose: {
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        overflowX: 'hidden',
+        width: 0,
+
+    },
+    toolbar: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+        '& img': {
+            width: 20,
+            height: 20,
+            cursor: 'pointer',
+        },
+
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+    },
+    sidebarContent: {
+        padding: '0px 16px',
+        '& select': {
+            width: '100%',
+            outline: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '8px 16px',
+            borderRadius: borderRadiuses.small,
+            ...getShadowStyle({ color: boxShadows.base }),
+            '&:hover': {
+                ...getShadowStyle({ color: boxShadows.baseHover }),
+            },
+        },
+    },
+    drawerRoot: {
+        backgroundColor: colors.bgColor,
+    },
+    btnDraw: {
+
+        '& img': {
+            width: 20,
+            height: 20,
+        }
     }
 });

@@ -1,20 +1,46 @@
+import { colors, textColors, borderRadiuses, boxShadows } from '../../../style/Theme'
+import { getShadowStyle } from '../../../utils/StylesUtils';
 
-import { colors, textColors, borderRadiuses } from '../../../style/Theme'
+const common = {
+    padding: '8px 16px',
+    borderRadius: borderRadiuses.small,
+    width: '100%',
+    boxSizing: 'border-box',
+    outline: 'none',
+    border: 'none',
+    ...getShadowStyle({ color: boxShadows.base }),
+    '&:hover': {
+        ...getShadowStyle({ color: boxShadows.baseHover }),
+    },
+    '&:focus': {
+        ...getShadowStyle({ color: boxShadows.baseHover }),
+    }
+}
+
+const pd = {
+    paddingLeft: '16px',
+    paddingRight: '16px',
+}
 
 export const styles = theme => ({
     paper: {
         width: '450px',
         margin: 16,
-        padding: '24px 16px',
-        // borderRadius: borderRadiuses.regular,
+        fontSize: 14,
     },
     top: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        ...pd,
+        borderBottom: `1px solid ${colors.bgDefault}`,
         '& img': {
-            width: 20,
-            height: 20,
+            width: 16,
+            height: 16,
             cursor: 'pointer',
         }
     },
@@ -34,41 +60,43 @@ export const styles = theme => ({
             marginBottom: 0,
         }
     },
-    error: {
-        color: 'red'
-    },
     info: {
         flexBasis: '60%',
         '& input': {
-            padding: 4,
-            width: '100%',
-            boxSizing: 'border-box',
-            outline: 'none',
+            height: 32,
+            ...common,
         },
         '& select': {
-            padding: 4,
-            width: '100%',
-            outline: 'none',
+            height: 32,
+            ...common,
+            cursor: 'pointer'
         },
         '& textarea': {
-            padding: 4,
-            width: '100%',
-            boxSizing: 'border-box',
             resize: 'none',
             outline: 'none',
+            fontFamily: 'inherit',
+            ...common,
         },
     },
     bottom: {
         display: 'flex',
         justifyContent: 'center',
-
-        '& span': {
-            background: colors.blue,
-            color: colors.white,
-            padding: '6px 12px',
-            borderRadius: borderRadiuses.tiny,
-            cursor: 'pointer',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        borderTop: `1px solid ${colors.bgDefault}`,
+        ...pd,
+    },
+    btn: {
+        background: colors.blue,
+        color: colors.white,
+        fontWeight: 'bold',
+        textTransform: 'none',
+        '&:hover': {
+            background: colors.blueHover,
         }
+    },
+    error: {
+        color: 'red'
     },
 
 

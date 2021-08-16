@@ -32,7 +32,7 @@ class VersionDetail extends Component {
                         </span>
                     </div>
                     <div>
-                        <p>
+                        <p className={classes.edit}>
                             <img src={icons.edit} />
                         </p>
                     </div>
@@ -65,7 +65,7 @@ class VersionDetail extends Component {
                         </span>
                     </div>
                     <div>
-                        <p>
+                        <p className={classes.edit}>
                             <img src={icons.edit} />
                         </p>
                     </div>
@@ -84,7 +84,7 @@ class VersionDetail extends Component {
                         <span>is dummy text used in laying out print out.</span>
                     </div>
                     <div>
-                        <p>
+                        <p className={classes.edit}>
                             <img src={icons.edit} />
                         </p>
                     </div>
@@ -110,19 +110,19 @@ class VersionDetail extends Component {
                     <div className={classes.collapTop} >
                         <div className={classes.topItem}>
                             <span>Version: <span className={classes.Previewing}>2.3.4</span></span>
-                            <p>
+                            <p className={classes.edit}>
                                 <img src={icons.edit} />
                             </p>
                         </div>
                         <div className={classes.topItem}>
                             <span>Status: <span className={classes.Active}>Active</span></span>
-                            <p>
+                            <p className={classes.edit}>
                                 <img src={icons.edit} />
                             </p>
                         </div>
                         <div className={classes.topItem}>
                             <span>Published date: <span className={classes.bold}>14.30 25.Jun.2021</span></span>
-                            <p>
+                            <p className={classes.edit}>
                                 <img src={icons.edit} />
                             </p>
                         </div>

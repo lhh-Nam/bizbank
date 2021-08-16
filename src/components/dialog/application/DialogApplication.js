@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { styles } from './styles';
 
 const icons = {
@@ -31,7 +32,7 @@ class DialogApplication extends Component {
                 <div className={classes.item} >
                     <p>Application Name <span> *</span> </p>
                     <div className={classes.info}>
-                        <input />
+                        <input placeholder='Application name' />
                     </div>
                 </div>
                 <div className={classes.item} >
@@ -58,10 +59,10 @@ class DialogApplication extends Component {
                         </select>
                     </div>
                 </div>
-                <div className={classes.item} >
+                <div className={classes.itemDesc} >
                     <p> Description <span> *</span> </p>
                     <div className={classes.info}>
-                        <textarea rows='3' />
+                        <textarea rows='3' placeholder='Description' />
                     </div>
                 </div>
             </div>
@@ -72,7 +73,9 @@ class DialogApplication extends Component {
         const { classes, handleClose } = this.props;
         return (
             <div className={classes.bottom} >
-                <span onClick={handleClose}>Create & continue</span>
+                <Button variant="contained" onClick={handleClose} className={classes.btn} >
+                    Create & continue
+                </Button>
             </div>
         )
     }

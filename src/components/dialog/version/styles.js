@@ -1,20 +1,30 @@
+import { colors, textColors, borderRadiuses, boxShadows } from '../../../style/Theme'
+import { getShadowStyle } from '../../../utils/StylesUtils';
 
-import { colors, textColors, borderRadiuses } from '../../../style/Theme'
+const pd = {
+    paddingLeft: '16px',
+    paddingRight: '16px',
+}
 
 export const styles = theme => ({
     paper: {
         width: '450px',
         margin: 16,
-        padding: '24px 16px',
         // borderRadius: borderRadiuses.regular,
     },
     top: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        ...pd,
+        borderBottom: `1px solid ${colors.bgDefault}`,
         '& img': {
-            width: 20,
-            height: 20,
+            width: 16,
+            height: 16,
             cursor: 'pointer',
         }
     },
@@ -23,6 +33,7 @@ export const styles = theme => ({
     },
     item: {
         display: 'flex',
+        alignItems: 'center',
         marginBottom: 24,
         '& p': {
             margin: 0,
@@ -41,26 +52,35 @@ export const styles = theme => ({
         '& input': {
             width: '100%',
             boxSizing: 'border-box',
+            padding: '8px 16px',
+            borderRadius: borderRadiuses.small,
+            outline: 'none',
+            border: 'none',
+            ...getShadowStyle({ color: boxShadows.base }),
+            '&:hover': {
+                ...getShadowStyle({ color: boxShadows.baseHover }),
+            },
+            '&:focus': {
+                ...getShadowStyle({ color: boxShadows.baseHover }),
+            }
         },
-        '& select': {
-            width: '100%'
-        },
-        '& textarea': {
-            width: '100%',
-            boxSizing: 'border-box',
-        },
+
     },
     bottom: {
         display: 'flex',
         justifyContent: 'flex-end',
-
-        '& span': {
-            background: colors.blue,
-            color: colors.white,
-            padding: '6px 12px',
-            marginRight: 32,
-            borderRadius: borderRadiuses.tiny,
-            cursor: 'pointer',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        borderTop: `1px solid ${colors.bgDefault}`,
+        ...pd,
+    },
+    btn: {
+        background: colors.blue,
+        color: colors.white,
+        fontWeight: 'bold',
+        textTransform: 'none',
+        '&:hover': {
+            background: colors.blueHover,
         }
     }
 });

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
-
+import Button from '@material-ui/core/Button';
 // styles
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './styles';
@@ -9,6 +9,7 @@ import DialogEdit from '../../../components/dialog/edit';
 
 const icons = {
     search: require('../../../assets/icons/search.png').default,
+    searchBlack: require('../../../assets/icons/search-black.png').default,
     edit: require('../../../assets/icons/edit.png').default,
 };
 
@@ -114,10 +115,11 @@ class ApplicationList extends Component {
             <div>
                 <div className={classes.flexBtw}>
                     <h2>Applications</h2>
-                    <span className={classes.create} onClick={() => this.redirectAddNew()}>+ Create</span>
+                    <Button className={classes.create} onClick={() => this.redirectAddNew()}>+ Create</Button>
                 </div>
                 <div className={classes.flexBtw}>
                     <div className={classes.inputArea}>
+                        <img src={icons.searchBlack} />
                         <input
                             placeholder='Application name'
                         />
@@ -168,16 +170,18 @@ class ApplicationList extends Component {
                                         <div className={classes.infoItem}><span>{item.type}</span></div>
                                         <div className={classes.infoItem}><span>{item.android}</span></div>
                                         <div className={classes.infoItem}><span>{item.ios}</span></div>
-                                        <div className={classes.infoItem}><span>{item.status}</span></div>
-                                        <div className={classes.visible}>
-                                            <a onClick={() => this.redirectEdit()}>
-                                                <img src={icons.edit} />
-                                            </a>
-                                            <Link to='/application/detail'>
-                                                <img src={icons.search} />
-                                            </Link>
-                                            {/* <img src={require('../../../assets/icons/common/ic_trash_can_r.png')} /> */}
+                                        <div className={classes.infoItem}>
+                                            <span className={classes.stt}>{item.status}</span>
+                                            <div className={classes.visible}>
+                                                <a onClick={() => this.redirectEdit()}>
+                                                    <img src={icons.edit} />
+                                                </a>
+                                                <Link to='/application/detail'>
+                                                    <img src={icons.search} />
+                                                </Link>
+                                            </div>
                                         </div>
+
                                     </div>
                                 )
                             })

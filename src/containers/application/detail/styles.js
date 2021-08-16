@@ -100,16 +100,19 @@ export const styles = theme => ({
             '&:last-child': {
                 display: 'flex',
                 '& p': {
-                    background: '#267aff',
-                    width: 20,
-                    height: 20,
+                    background: colors.blue,
+                    width: 25,
+                    height: 25,
                     borderRadius: '50%',
                     margin: '0 8px 0 0',
                     padding: 4,
                     cursor: "pointer",
+                    '&:hover': {
+                        background: colors.blueHover,
+                    },
                     '& img': {
-                        width: 20,
-                        height: 20,
+                        width: 25,
+                        height: 25,
                     }
                 },
 
@@ -198,17 +201,20 @@ export const styles = theme => ({
         transform: 'translateY(-50%)',
         zIndex: 100,
         '& a': {
-            background: '#267aff',
-            width: 20,
-            height: 20,
+            background: colors.blue,
+            width: 25,
+            height: 25,
             borderRadius: '50%',
             marginRight: 8,
             padding: 4,
             cursor: "pointer",
+            '&:hover': {
+                background: colors.blueHover,
+            },
         },
         '& img': {
-            width: 20,
-            height: 20,
+            width: 25,
+            height: 25,
         }
     },
 });

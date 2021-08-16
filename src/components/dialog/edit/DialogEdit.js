@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
 import { styles } from './styles';
 
 const icons = {
@@ -115,7 +116,6 @@ class DialogEdit extends Component {
                 </div>
                 <div className={classes.item} >
                     <p></p>
-                    {/* <p> Description <span> *</span> </p> */}
                     <div className={classes.info}>
                         <textarea rows='3' value={item.description} onChange={(e) => this.onChangeText(e, 'description')} />
                     </div>
@@ -128,7 +128,9 @@ class DialogEdit extends Component {
         const { classes, handleClose } = this.props;
         return (
             <div className={classes.bottom} >
-                <span onClick={handleClose}>Save changes</span>
+                <Button variant="contained" onClick={handleClose} className={classes.btn} >
+                    Save changes
+                </Button>
             </div>
         )
     }

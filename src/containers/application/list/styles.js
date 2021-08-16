@@ -1,4 +1,5 @@
-import { colors, textColors, borderRadiuses } from '../../../style/Theme'
+import { colors, textColors, borderRadiuses, boxShadows } from '../../../style/Theme'
+import { getShadowStyle } from '../../../utils/StylesUtils';
 
 const row = {
     //width: 'fit-content',
@@ -17,7 +18,7 @@ const row = {
 
 export const styles = theme => ({
     wrapper: {
-        margin: '32px 48px'
+        margin: '32px 48px',
     },
     flexBtw: {
         display: 'flex',
@@ -25,19 +26,43 @@ export const styles = theme => ({
         alignItems: 'center',
     },
     inputArea: {
+        height: 41,
+        display: 'flex',
+        alignItems: 'center',
+        ...getShadowStyle({ color: boxShadows.base }),
+        borderRadius: borderRadiuses.small,
+        backgroundColor: colors.white,
+        '&:hover': {
+            ...getShadowStyle({ color: boxShadows.baseHover }),
+        },
+        '& img': {
+            width: 20,
+            height: 20,
+            padding: '0 16px',
+        },
         '& input': {
             width: 270,
-            borderRadius: 10,
-            border: '1px solid #000',
-            padding: '4px 8px',
+            border: 'none',
             outline: 'none',
         }
     },
     selectArea: {
         '& select': {
-            width: 120,
+            cursor: 'pointer',
+            height: 41,
+            width: 200,
+            padding: '0 16px',
             marginLeft: 12,
+            borderRadius: borderRadiuses.small,
             outline: 'none',
+            border: 'none',
+            ...getShadowStyle({ color: boxShadows.base }),
+            '&:hover': {
+                ...getShadowStyle({ color: boxShadows.baseHover }),
+            },
+            '&:focus': {
+                ...getShadowStyle({ color: boxShadows.baseHover }),
+            }
         }
     },
     table: {
@@ -54,14 +79,7 @@ export const styles = theme => ({
     },
     headingItem: {
         padding: '0px 12px',
-        // overflow: 'hidden',
-        // textOverflow: 'ellipsis',
-        // whiteSpace: 'nowrap',
     },
-
-    bodyRow: {
-    },
-
     test: {
         top: "50%",
         left: "50%",
@@ -70,57 +88,57 @@ export const styles = theme => ({
         transform: "translate(-50%, -50%)",
         visibility: 'hidden',
     },
-
     rowColor: {
         flexBasis: 80,
         position: 'relative',
     },
-
     infoRow: {
         ...row,
         position: 'relative',
         '&:hover': {
-            '& $visible, $test': {
-                visibility: 'visible'
+            '& $visible': {
+                display: 'flex',
+            },
+            '& $stt': {
+                display: 'none',
             }
+
         },
         [theme.breakpoints.down('md')]: {
             width: 'fit-content',
         },
-        // '&:nth-child(even)': {
-        //     background: 'red'
-        // }
+    },
+    stt: {
+        display: 'block',
     },
     infoItem: {
         padding: '24px 12px',
-        // overflow: 'hidden',
-        // textOverflow: 'ellipsis',
-        // whiteSpace: 'nowrap',
+        display: 'flex',
+        alignItems: 'center',
     },
     visible: {
         flex: 1,
-        display: 'flex',
+        display: 'none',
         alignItems: 'center',
-        visibility: 'hidden',
-        position: 'absolute',
-        top: '50%',
-        right: 0,
-        transform: 'translateY(-50%)',
         '& a': {
-            background: '#267aff',
-            width: 20,
-            height: 20,
+            background: colors.blue,
+            width: 25,
+            height: 25,
             borderRadius: '50%',
             marginRight: 8,
             padding: 4,
             cursor: "pointer",
+            '&:hover': {
+                background: colors.blueHover,
+            },
         },
         '& img': {
-            width: 20,
-            height: 20,
+            width: 25,
+            height: 25,
         }
     },
     create: {
         color: textColors.info,
+        fontWeight: 'bold',
     }
 });

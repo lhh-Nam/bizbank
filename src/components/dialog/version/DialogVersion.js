@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './styles';
 
@@ -20,7 +21,9 @@ class DialogVersion extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.bottom} >
-                <span onClick={() => this.handleClose()}>Create & continue</span>
+                <Button variant="contained" onClick={() => this.handleClose()} className={classes.btn} >
+                    Create & continue
+                </Button>
             </div>
         )
     }
@@ -32,7 +35,7 @@ class DialogVersion extends Component {
                 <div className={classes.item} >
                     <p>Version <span> *</span> </p>
                     <div className={classes.info}>
-                        <input />
+                        <input placeholder='Version' />
                     </div>
                 </div>
             </div>
@@ -43,7 +46,7 @@ class DialogVersion extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.top} >
-                <span>Create Application</span>
+                <span>Create Version</span>
                 <span onClick={() => this.handleClose()}><img src={icons.delete} /></span>
             </div>
         )

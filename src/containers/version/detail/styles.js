@@ -25,6 +25,7 @@ export const styles = theme => ({
         padding: '16px',
         position: 'relative',
         border: `0.5px solid ${colors.gray}`,
+        minHeight: 33,
     },
     collapBottom: {
         padding: '0px 8px',
@@ -33,11 +34,11 @@ export const styles = theme => ({
         display: 'flex',
         flexDirection: 'column',
 
-        paddingBottom: 12,
+        paddingBottom: 16,
         borderBottom: `4px dotted ${colors.gray}`,
-        marginBottom: 12,
+        marginBottom: 16,
         '&:first-child': {
-            paddingTop: 12,
+            paddingTop: 16,
         },
         '&:last-child': {
             marginBottom: 0,
@@ -45,7 +46,7 @@ export const styles = theme => ({
         },
         '& span': {
             '&:first-child': {
-                paddingBottom: 12,
+                paddingBottom: 16,
                 fontWeight: 'bold',
             },
         },
@@ -57,16 +58,19 @@ export const styles = theme => ({
             '&:last-child': {
                 display: 'flex',
                 '& p': {
-                    background: '#267aff',
-                    width: 20,
-                    height: 20,
+                    background: colors.blue,
+                    width: 25,
+                    height: 25,
                     borderRadius: '50%',
                     margin: '0 8px 0 0',
                     padding: 4,
                     cursor: "pointer",
+                    '&:hover': {
+                        background: colors.blueHover,
+                    },
                     '& img': {
-                        width: 20,
-                        height: 20,
+                        width: 25,
+                        height: 25,
                     }
                 },
 
@@ -77,6 +81,11 @@ export const styles = theme => ({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        '&:hover': {
+            '& $edit': {
+                display: 'block',
+            },
+        },
     },
     Draft: {
         ...bold,
@@ -107,19 +116,27 @@ export const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         '& p': {
-            background: '#267aff',
-            width: 20,
-            height: 20,
+            background: colors.blue,
+            width: 25,
+            height: 25,
             borderRadius: '50%',
             margin: 0,
             marginLeft: 6,
             padding: 4,
             cursor: "pointer",
+            '&:hover': {
+                background: colors.blueHover,
+            },
         },
         '& img': {
-            width: 20,
-            height: 20,
-        }
+            width: 25,
+            height: 25,
+        },
+        '&:hover': {
+            '& $edit': {
+                display: 'block',
+            },
+        },
     },
 
     visible: {
@@ -134,16 +151,20 @@ export const styles = theme => ({
         zIndex: 100,
         '& a': {
             background: '#267aff',
-            width: 20,
-            height: 20,
+            width: 25,
+            height: 25,
             borderRadius: '50%',
             marginRight: 8,
             padding: 4,
             cursor: "pointer",
         },
         '& img': {
-            width: 20,
-            height: 20,
+            width: 25,
+            height: 25,
         }
     },
+
+    edit: {
+        display: 'none',
+    }
 });

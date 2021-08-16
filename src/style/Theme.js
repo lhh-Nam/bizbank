@@ -21,6 +21,7 @@ export const colors = {
     grayDim: '#9C9C9C',
 
     blue: '#267aff',
+    blueHover: '#1d68de',
     blueLight: '#57bfdb',
     blueLess: '#848c99',
     blueDim: '#616E82',
@@ -51,6 +52,49 @@ export const textColors = {
     error: '#e94440',
     danger: '#e94440',
     placeholder: 'rgba(73,73,73,0.5)',
+};
+
+
+export const boxShadows = {
+    base: 'rgba(125, 125, 125, 0.08)',
+    baseHover: 'rgba(125, 125, 125, 0.2)',
+    baseDark: 'rgba(125, 125, 125, 0.5)',
+    baseBlack: 'rgba(125, 125, 125, 0.8)',
+    baseLight: 'rgba(73, 73, 73, 0.16)',
+
+    button: 'rgba(73, 73, 73, 0.08)',
+    buttonHover: 'rgba(73, 73, 73, 0.2)',
+
+    primary: 'rgba(73, 73, 73, 0.08)',
+    primaryHover: 'rgba(73, 73, 73, 0.2)',
+    primaryDark: 'rgba(73, 73, 73, 0.5)',
+    primaryBlack: 'rgba(73, 73, 73, 0.8)',
+
+    grayLight: 'rgb(233, 233, 233, 0.5)',
+    grayLightHover: 'rgb(233, 233, 233,0.8)',
+    grayDark: 'rgba(85, 89, 109, 0.5)',
+    grayDarkHover: 'rgba(85, 89, 109, 0.8)',
+
+    blue: 'rgba(38, 122, 255, 0.5)',
+    blueHover: 'rgba(38, 122, 255, 0.8)',
+    blueLight: 'rgba(87, 191, 219, 0.5)',
+    blueLightHover: 'rgba(87, 191, 219, 0.8)',
+
+    green: 'rgba(76, 167, 80, 0.5)',
+    greenHover: 'rgba(76, 167, 80, 0.8)',
+
+    orange: 'rgba(254, 162, 32, 0.5)',
+    orangeHover: 'rgba(254, 162, 32, 0.8)',
+    orangeLight: 'rgba(233, 188, 90, 0.5)',
+    orangeLighthover: 'rgba(233, 188, 90, 0.8)',
+
+    red: 'rgba(233, 68, 64, 0.5)',
+    redHover: 'rgba(233, 68, 64, 0.8)',
+    redLight: 'rgba(251, 123, 101, 0.5)',
+    redLightHover: 'rgba(251, 123, 101, 0.8)',
+
+    purple: 'rgba(165, 64, 184, 0.5)',
+    purpleHover: 'rgba(165, 64, 184, 0.8)',
 };
 
 export const borderRadiuses = {

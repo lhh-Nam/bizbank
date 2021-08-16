@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Collapse from "@material-ui/core/Collapse";
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { styles } from './styles';
 import DialogVersion from '../../../components/dialog/version';
 import { Link } from "react-router-dom";
@@ -114,7 +115,7 @@ class ApplicationDetail extends Component {
                     {tabs.map((tab, idx) => <p className={currentTab === tab ? classes.active : null} key={idx} onClick={() => this.onChangeTab(tab)}>{tab}</p>)}
                 </div>
                 <div>
-                    <span onClick={() => this.redirectAddNew()}>+ Create</span>
+                    <Button className={classes.create} onClick={() => this.redirectAddNew()}>+ Create</Button>
                 </div>
             </div>
         )

@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import DateFnsUtils from "@date-io/date-fns";
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker
+} from "@material-ui/pickers";
+import Button from '@material-ui/core/Button';
 import { styles } from './styles';
 
 const icons = {
@@ -105,7 +111,10 @@ class ReportActivity extends Component {
                         <img src={icons.web} /><span>Google chrome (iPad)</span>
                     </div>
                 </div>
-                <div className={classes.export}><img src={icons.excel} /> Export to Excel</div>
+
+                <Button className={classes.export}>
+                    <img src={icons.excel} /> Export to Excel
+                </Button>
             </div>
         )
     }
@@ -147,7 +156,13 @@ class ReportActivity extends Component {
                         <img src={icons.calendar} />
                     </div>
                 </div>
-                <p className={classes.confirmBtn}>GO</p>
+                <Button
+                    variant="contained"
+                    color="default"
+                    className={classes.confirmBtn}
+                >
+                    GO
+                </Button>
             </div>
         )
     }
@@ -239,6 +254,22 @@ class ReportActivity extends Component {
             <div className={classes.wrapper}>
                 <h2>User Activity Report</h2>
                 {this._renderBodyPage()}
+                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid container justifyContent="space-around">
+
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Date picker dialog"
+                            format="MM/dd/yyyy"
+
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+
+                    </Grid>
+                </MuiPickersUtilsProvider> */}
             </div>
         );
     }

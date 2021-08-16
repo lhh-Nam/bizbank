@@ -1,4 +1,5 @@
-import { textColors, colors, borderRadiuses } from '../../../style/Theme'
+import { textColors, colors, borderRadiuses, boxShadows } from '../../../style/Theme';
+import { getShadowStyle } from '../../../utils/StylesUtils'
 
 const flex = {
     display: 'flex',
@@ -52,7 +53,6 @@ export const styles = theme => ({
         padding: '16px 8px'
     },
     confirmBtn: {
-        border: `1px solid ${colors.black}`,
         background: colors.bgDefault,
         borderRadius: 3,
         padding: '4px 8px',
@@ -180,11 +180,18 @@ export const styles = theme => ({
             '& img': {
                 width: 20,
                 height: 20,
+                cursor: 'pointer',
             },
             '& input': {
                 margin: '0 16px',
-                padding: 4,
-                cursor: 'pointer',
+                padding: '8px 16px',
+                border: 'none',
+                outline: 'none',
+                borderRadius: borderRadiuses.small,
+                ...getShadowStyle({ color: boxShadows.base }),
+                '&:hover': {
+                    ...getShadowStyle({ color: boxShadows.baseHover }),
+                },
             }
         }
     },
@@ -193,6 +200,10 @@ export const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         margin: '24px 0px',
+        textTransform: 'none',
+        fontWeight: 'inherit',
+        fontSize: 'inherit',
+        fontFamily: 'inherit',
         '& img': {
             width: 20,
             height: 20,
