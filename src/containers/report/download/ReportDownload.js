@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
+import DateFnsUtils from "@date-io/date-fns";
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker
+} from "@material-ui/pickers";
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './styles';
+import { colors } from '@material-ui/core';
 
 const icons = {
     android: require('../../../assets/icons/android-gray.png').default,
-    apple: require('../../../assets/icons/apple.png').default,
+    ios: require('../../../assets/icons/apple.png').default,
     calendar: require('../../../assets/icons/calendar.png').default,
     excel: require('../../../assets/icons/excel-black.png').default,
     search: require('../../../assets/icons/search-black.png').default,
@@ -63,6 +70,7 @@ const data = [
         icon: '',
     },
 ]
+const operating = ['android', 'ios'];
 
 class ReportDownload extends Component {
     constructor(props) {
@@ -72,6 +80,10 @@ class ReportDownload extends Component {
             filter,
             content: data,
             isOpen: true,
+            selectedDate: {
+                from: new Date(),
+                to: new Date(),
+            },
             currentFilter: filter[0]
         }
     }
@@ -79,6 +91,9 @@ class ReportDownload extends Component {
     toggleDrawer = () => this.setState(state => ({ isOpen: !state.isOpen }))
 
     onChangeTab = (tab) => this.setState({ currentFilter: tab });
+    onChangeOperating = (name) => this.setState({ currentOperating: name });
+
+    handleDateChange = (date, key) => this.setState(state => ({ selectedDate: { ...state.selectedDate, [key]: date } }));
 
     _renderSidebar() {
         const { classes } = this.props;
@@ -141,24 +156,40 @@ class ReportDownload extends Component {
 
     _renderFilter() {
         const { classes } = this.props;
-        const { filter, currentFilter } = this.state;
+        const { filter, currentFilter, selectedDate } = this.state;
         return (
             <div className={classes.filter}>
-                <div className={classes.btnGroup}>
+                <ButtonGroup aria-label="contained primary button group" className={classes.test}>
                     {filter.map((item, idx) => {
-                        return <p key={idx} className={currentFilter === item ? classes.active : null} onClick={() => this.onChangeTab(item)}>{item}</p>
+                        return <Button key={idx} className={currentFilter === item ? classes.active : null} onClick={() => this.onChangeTab(item)}>{item}</Button>
                     })}
-                </div>
+                </ButtonGroup>
                 <div className={classes.date}>
                     <div>
-                        <span>From</span>
-                        <input />
-                        <img src={icons.calendar} />
+                        <span className={classes.titleDate}>From</span>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                format="MM/dd/yyyy"
+                                value={selectedDate?.from}
+                                onChange={(date) => this.handleDateChange(date, 'from')}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                     </div>
                     <div>
-                        <span>To</span>
-                        <input />
-                        <img src={icons.calendar} />
+                        <span className={classes.titleDate}>To</span>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                format="MM/dd/yyyy"
+                                value={selectedDate?.to}
+                                onChange={(date) => this.handleDateChange(date, 'to')}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                     </div>
                 </div>
                 <Button
@@ -167,13 +198,13 @@ class ReportDownload extends Component {
                     className={classes.confirmBtn}
                 >GO
                 </Button>
-                {/* <p className={classes.confirmBtn}>GO</p> */}
             </div>
         )
     }
 
     _renderSystem() {
         const { classes } = this.props;
+        const { currentOperating } = this.state;
         return (
             <div className={classes.system}>
                 <div className={classes.account}>
@@ -183,8 +214,15 @@ class ReportDownload extends Component {
                     <Button variant="outlined">Thiết bị có hơn 1<br />Tk đăng nhập</Button>
                 </div>
                 <div className={classes.operating}>
-                    <Button variant="outlined"><img src={icons.android} /></Button>
-                    <Button variant="outlined"><img src={icons.apple} /></Button>
+                    {operating.map((name, idx) => {
+                        return <Button
+                            variant="outlined"
+                            key={idx}
+                            className={currentOperating === name ? classes.active : null}
+                            onClick={() => this.onChangeOperating(name)} >
+                            <img src={icons[name]} />
+                        </Button>
+                    })}
                 </div>
             </div>
         )
@@ -202,7 +240,6 @@ class ReportDownload extends Component {
                     <div className={classes.headingItem}><span>Version</span></div>
                     <div className={classes.headingItem}><span>Device Serial Number</span></div>
                     <div className={classes.headingItem}><span>Device model</span></div>
-                    {/* <div className={classes.visible}></div> */}
                 </div>
                 <div className={classes.body}>
                     <div className={classes.bodyRow} >
@@ -216,7 +253,7 @@ class ReportDownload extends Component {
                                         <div className={classes.infoItem}><span>{item.version}</span></div>
                                         <div className={classes.infoItem}><span>{item.serial}</span></div>
                                         <div className={classes.infoItem}><span>{item.device}</span></div>
-                                        <div className={classes.infoItem}><span><img src={icons.apple} /></span></div>
+                                        <div className={classes.infoItem}><span><img src={icons.ios} /></span></div>
                                     </div>
                                 )
                             })
@@ -242,7 +279,6 @@ class ReportDownload extends Component {
                 >
                     <img src={icons.excel} /> Export
                 </Button>
-                {/* <div className={classes.export}><img src={icons.excel} /> Export</div> */}
             </div>
         )
     }

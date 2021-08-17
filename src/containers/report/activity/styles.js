@@ -1,5 +1,4 @@
-import { textColors, colors, borderRadiuses, boxShadows } from '../../../style/Theme';
-import { getShadowStyle } from '../../../utils/StylesUtils'
+import { textColors, colors, borderRadiuses } from '../../../style/Theme';
 
 const flex = {
     display: 'flex',
@@ -8,7 +7,6 @@ const flex = {
 }
 
 const row = {
-    // width: '100%',
     display: 'grid',
     gridTemplateColumns:
         `minmax(150px, 1fr)
@@ -176,24 +174,11 @@ export const styles = theme => ({
         '& div': {
             display: 'flex',
             alignItems: 'center',
-            marginRight: 32,
-            '& img': {
-                width: 20,
-                height: 20,
-                cursor: 'pointer',
-            },
-            '& input': {
-                margin: '0 16px',
-                padding: '8px 16px',
-                border: 'none',
-                outline: 'none',
-                borderRadius: borderRadiuses.small,
-                ...getShadowStyle({ color: boxShadows.base }),
-                '&:hover': {
-                    ...getShadowStyle({ color: boxShadows.baseHover }),
-                },
-            }
+            marginRight: 16,
         }
+    },
+    titleDate: {
+        marginRight: 16,
     },
     export: {
         width: 'fit-content',
@@ -209,5 +194,5 @@ export const styles = theme => ({
             height: 20,
             marginRight: 8,
         },
-    }
+    },
 });

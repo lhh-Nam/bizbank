@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ReportDownload from './containers/report/download';
 import ReportActivity from './containers/report/activity';
 import VersionDetail from './containers/version/detail';
-import Sidebar from './components/sidebar/Sidebar';
+import Sidebar from './components/sidebar';
 
 function App() {
   return (

@@ -44,9 +44,6 @@ class Sidebar extends Component {
                     }}
                 >
                     <div className={classes.toolbar} style={{ justifyContent: isOpen ? 'flex-end' : 'center' }}>
-                        {/* <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                        </IconButton> */}
                         <IconButton onClick={this.toggleDrawer} >
                             <img src={icons[isOpen ? 'chevron' : 'menus']} />
                         </IconButton>
@@ -54,8 +51,8 @@ class Sidebar extends Component {
                     {
                         ['home', 'download', 'activity',].map((name, idx) => {
                             return (
-                                <Link to={`${name === 'home' ? '/' : `/report/${name}`}`}>
-                                    <div key={idx} className={classes.menuItem}>
+                                <Link key={idx} to={`${name === 'home' ? '/' : `/report/${name}`}`}>
+                                    <div className={classes.menuItem}>
                                         <img src={icons[name]} />
                                         <span>{name}</span>
                                     </div>

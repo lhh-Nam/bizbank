@@ -63,9 +63,15 @@ class ReportActivity extends Component {
         this.state = {
             filter,
             content: data,
+            selectedDate: {
+                from: new Date(),
+                to: new Date(),
+            },
             currentFilter: filter[0]
         }
     }
+
+    handleDateChange = (date, key) => this.setState(state => ({ selectedDate: { ...state.selectedDate, [key]: date } }));
 
     _renderStatus() {
         const { classes } = this.props;
@@ -141,19 +147,35 @@ class ReportActivity extends Component {
 
     _renderFilter() {
         const { classes } = this.props;
-        const { filter } = this.state;
+        const { selectedDate } = this.state;
         return (
             <div className={classes.filter}>
                 <div className={classes.date}>
                     <div>
-                        <span>From</span>
-                        <input />
-                        <img src={icons.calendar} />
+                        <span className={classes.titleDate}>From</span>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                format="MM/dd/yyyy"
+                                value={selectedDate?.from}
+                                onChange={(date) => this.handleDateChange(date, 'from')}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                     </div>
                     <div>
-                        <span>To</span>
-                        <input />
-                        <img src={icons.calendar} />
+                        <span className={classes.titleDate}>To</span>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                format="MM/dd/yyyy"
+                                value={selectedDate?.to}
+                                onChange={(date) => this.handleDateChange(date, 'to')}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                     </div>
                 </div>
                 <Button
@@ -254,22 +276,6 @@ class ReportActivity extends Component {
             <div className={classes.wrapper}>
                 <h2>User Activity Report</h2>
                 {this._renderBodyPage()}
-                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <Grid container justifyContent="space-around">
-
-                        <KeyboardDatePicker
-                            margin="normal"
-                            id="date-picker-dialog"
-                            label="Date picker dialog"
-                            format="MM/dd/yyyy"
-
-                            KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
-                        />
-
-                    </Grid>
-                </MuiPickersUtilsProvider> */}
             </div>
         );
     }

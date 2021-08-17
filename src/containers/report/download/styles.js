@@ -1,9 +1,5 @@
-import { textColors, colors, borderRadiuses, boxShadows } from '../../../style/Theme';
+import { colors, borderRadiuses, boxShadows } from '../../../style/Theme';
 import { getShadowStyle } from '../../../utils/StylesUtils';
-
-const bold = {
-    fontWeight: 'bold',
-}
 
 const flex = {
     display: 'flex',
@@ -12,10 +8,8 @@ const flex = {
 }
 
 const row = {
-    //width: 'fit-content',
     width: '100%',
     display: 'grid',
-    //borderBottom: '1px solid #000',
     gridTemplateColumns:
         `minmax(150px, 1fr)
             minmax(150px, 1fr)
@@ -45,8 +39,6 @@ export const styles = theme => ({
         display: 'flex',
     },
     main: {
-        // flexBasis: '70%',
-        // width: '70%',
         flex: 1,
     },
     title: {
@@ -185,29 +177,16 @@ export const styles = theme => ({
             borderRight: 'none',
         }
     },
-
     date: {
         display: 'flex',
         '& div': {
             display: 'flex',
             alignItems: 'center',
-            marginRight: 32,
-            '& img': {
-                width: 20,
-                height: 20,
-                cursor: 'pointer',
-            },
-            '& input': {
-                margin: '0 16px',
-                padding: '8px 16px',
-                border: 'none',
-                borderRadius: borderRadiuses.small,
-                ...getShadowStyle({ color: boxShadows.base }),
-                '&:hover': {
-                    ...getShadowStyle({ color: boxShadows.baseHover }),
-                },
-            }
+            marginRight: 16,
         }
+    },
+    titleDate: {
+        marginRight: 16,
     },
     export: {
         background: colors.bgDefault,
@@ -345,6 +324,15 @@ export const styles = theme => ({
         '& img': {
             width: 20,
             height: 20,
+        }
+    },
+    test: {
+        background: colors.bgDefault,
+        '& button': {
+            textTransform: 'none',
+            fontFamily: 'inherit',
+            fontSize: 'inherit',
+            fontWeight: 'inherit',
         }
     }
 });

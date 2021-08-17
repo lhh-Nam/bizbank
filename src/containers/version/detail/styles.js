@@ -1,4 +1,4 @@
-import { textColors, colors, borderRadiuses } from '../../../style/Theme'
+import { textColors, colors } from '../../../style/Theme'
 
 const bold = {
     fontWeight: 'bold',

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Collapse from "@material-ui/core/Collapse";
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './styles';
-import DialogVersion from '../../../components/dialog/version';
-import { Link } from "react-router-dom";
 
 const icons = {
     search: require('../../../assets/icons/search.png').default,
